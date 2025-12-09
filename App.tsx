@@ -15,6 +15,19 @@ function App() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []); 
 
+  // Prevent accidental page close/refresh if files are loaded
+  useEffect(() => {
+    const handleBeforeUnload = (e: BeforeUnloadEvent) => {
+      if (files.length > 0) {
+        e.preventDefault();
+        e.returnValue = ''; // Required for Chrome
+      }
+    };
+
+    window.addEventListener('beforeunload', handleBeforeUnload);
+    return () => window.removeEventListener('beforeunload', handleBeforeUnload);
+  }, [files.length]);
+
   const handleFilesAdded = (newFiles: File[]) => {
     const maxFiles = 90;
     const remainingSlots = maxFiles - files.length;
