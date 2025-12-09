@@ -1,0 +1,5 @@
+{
+  "name": "Tombola Audio",
+  "description": "Carica file audio, genera un tabellone e gioca estraendo numeri casuali associati ai suoni.",
+  "requestFramePermissions": []
+}
