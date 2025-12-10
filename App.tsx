@@ -82,10 +82,8 @@ function App() {
   };
 
   const handleResetApp = () => {
-    // We use a timeout to ensure UI isn't blocked if confirm takes a moment
     setTimeout(() => {
         if (window.confirm("Sei sicuro? Questo cancellerà tutti i file caricati.")) {
-            // Cleanup URLs
             files.forEach(file => URL.revokeObjectURL(file.url));
             setFiles([]);
             setGameState('upload');
@@ -94,7 +92,7 @@ function App() {
   };
 
   return (
-    <div className="h-screen w-full bg-slate-50 text-slate-900 font-sans">
+    <div className="h-full w-full font-sans overflow-hidden">
       {gameState === 'upload' ? (
         <UploadSection
           files={files}
