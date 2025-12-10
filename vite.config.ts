@@ -1,22 +1,9 @@
-
-
-import { URL, fileURLToPath } from 'url';
-import { defineConfig, loadEnv } from 'vite';
+import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 
-export default defineConfig(({ mode }) => {
-    const env = loadEnv(mode, '.', '');
-    return {
-        base: './',
-        plugins: [react()],
-        define: {
-            'process.env.API_KEY': JSON.stringify(env.GEMINI_API_KEY),
-        },
-        resolve: {
-            alias: {
-                // FIX: __dirname is not available in ES modules. Replaced with an equivalent using import.meta.url.
-                '@': fileURLToPath(new URL('.', import.meta.url)),
-            }
-        }
-    };
+// https://vitejs.dev/config/
+export default defineConfig({
+    plugins: [react()],
+    // Imposta la base path per GitHub Pages corrispondente al nome della repository
+    base: './',
 });
