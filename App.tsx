@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import  { useState, useEffect } from 'react';
 import { UploadSection } from './components/UploadSection';
 import { GameSection } from './components/GameSection';
 import { AudioFile, GameState } from './types';
